@@ -135,21 +135,44 @@ Describe at least:
 
 - Craigslist-type of problem domain
 - Adds video chat for verifying buyer/seller
-- Has text chat for other use cases, such as haggling / discussion
+- Has text chat for other use cases, such as haggling / meetup locations / other discussion
 
 2. What problem or pain point does it solve? a. Keep it high level without going into too much detail. (3-4 sentences is enough)
 
-3. Minimum Viable Product (MVP) definition.  
-   - What is the minimum required for you to present on your demo day?  
+- Can finally see who you're going to meet before meeting up to buy/sell
+
+3. Minimum Viable Product (MVP) definition. What is the minimum required for you to present on your demo day?
+
+- Create an account
+  (basicAuth)-
+- Maintain your account (password, email address, profile, etc)
+- Logging in (bearerAuth jwt)
+- Post a listing
+- Update a listing
+- Delete a listing
+- Message a listing owner(socket.io or SNS/SQS)
+- Initiate a potential meetup with seller, with a payment offer / terms
+- (stretch goal) Video message with listing owner
 
 ## Project Plan B
   
 1. Summary of idea.  
 
+- Chat app with multiple chat rooms if the user wants
+
 2. What problem or pain point does it solve? a. Keep it high level without going into too much detail. (3-4 sentences is enough)  
 
-3. Minimum Viable Product (MVP) definition.  
-   - What is the minimum required for you to present on your demo day?
+- Makes it possible to demonstrate a chat application which can work with or without cloud services
+
+3. Minimum Viable Product (MVP) definition. What is the minimum required for you to present on your demo day?
+
+- Create an account
+- Maintain your account (password, email address, profile, etc)
+- Create chat rooms
+- Join one or many chat room
+- On join, client is subscribed to the room topic
+- Unsubscribe / unjoin one or many chat rooms
+- Post to chat room
 
 ### Ideas
 
