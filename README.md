@@ -7,11 +7,9 @@
 - Roop Hayer  
 - Ryan Emmans  
 
-[Requirements](https://github.com/Team-JARR/bazaar/blob/main/requirements.md)\
-[Team Agreement](https://github.com/Team-JARR/bazaar/blob/main/project-management/team-agreement.md)
+[Requirements](./project-management/requirements.md)  
+[Team Agreement](./project-management/team-agreement.md)
 
 ## UML
 
-![UML](img/uml.png)
-
-
+![UML](./img/uml.png)
