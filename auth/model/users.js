@@ -7,7 +7,7 @@ const SECRET = process.env.SECRET || 'lololol';
 
 const userModel = (sequelize, DataTypes)=> {
   const model = sequelize.define('Users', {
-    username: {type: DataTypes.STING, allowNull: true, unique : true},
+    username: {type: DataTypes.STRING, allowNull: true, unique : true},
     password: {type: DataTypes.STRING, allowNull: true},
     role: {type: DataTypes.ENUM('user','admin'), allowNull: true, defaultValue: 'user'},
     token: {
@@ -24,8 +24,9 @@ const userModel = (sequelize, DataTypes)=> {
         get(){
           const acl ={
             user = ['read'],
-            admin = ['read', ['create', update],
+            admin = ['read','create', 'update', 'delete']
           }
+          return acl [this.role];
         }
       }
     }

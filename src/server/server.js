@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+const authRouter = require('..auth/routes.js')
 
 // auth imports here
 
@@ -16,15 +17,16 @@ app.post('/say-hello', (req, res) => {
     res.status(201).send('Hello!');
 });
 
-app.post('/signup', (req, res) => {
-    const profile = new Profile();
+// app.post('/signup', (req, res) => {
+//     const profile = new Profile();
 
-    profile.firstName = 'Joe';
-    profile.lastName = 'Mama';
-    profile.credentialHash = 'my-cool-hash';
+//     profile.firstName = 'Joe';
+//     profile.lastName = 'Mama';
+//     profile.credentialHash = 'my-cool-hash';
 
-    res.status(201).send(profile);
-});
+//     res.status(201).send(profile);
+// });
+
 
 module.exports = {
     server: app,
