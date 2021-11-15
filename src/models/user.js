@@ -6,10 +6,10 @@
 
 
 /**
- * A persistence-agnostic profile model.
+ * A persistence-agnostic user model.
  */
 class User {
-    profileId;
+    userId;
     firstName;
     lastName;
     credentialHash;
@@ -19,10 +19,10 @@ class User {
  * A base model we can use until we have figured out persistence deployment.
  */
 class CommonDbModel {
-    profile;
+    user;
 
-    constructor(profile) {
-        this.profile = profile;
+    constructor(user) {
+        this.user = user;
     }
 
     persist() { throw error('Cannot operate on base model.'); }
@@ -32,14 +32,28 @@ class CommonDbModel {
 
 
 const { Sequelize, DataTypes } = require('sequelize'); // sequelize dependency
-class ProfileSequelizeModel extends CommonDbModel {
+class UserSequelizeModel extends CommonDbModel {
+    #acl = {
+        user: ['read'],
+        admin: ['read', 'create', 'update', 'delete'],
+    };
+
     dataTypes = DataTypes;
     sequelize = new Sequelize('sqlite::memory:'); // sqlite3 dependency
+    user;
 
-    profile;
+    constructor({user}){
+        //this.user = user || new User();
+         if (user) {
+             this.user = user;
+             return;
+         }
 
-    constructor({profile}){
-        this.profile = profile || new User();
+         // create default model
+         const defaultUser = new User();
+
+         // todo: double-check this guid generation
+         defaultUser.userId = new UUID();
     }
 
     persist() {
@@ -49,23 +63,54 @@ class ProfileSequelizeModel extends CommonDbModel {
     restore() {
         // restore from sequelize
 
-        this.profile = ...;
+        //this.user = ...;
     }
 
     getModel() {
-        return (sequelize, dataTypes) => {
+        const acl = this.#acl;
 
+        return (sequelize, dataTypes) => {
+            // db user table schema
+            const userTable = sequelize.define('Users', {
+                userId: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                firstName: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                lastName: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                credentialHash: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
+                role: {
+                    type: DataTypes.VIRTUAL,
+                    defaultValue: 'user',
+                    allowNull: false,
+                },
+                token : {
+                    type: DataTypes.VIRTUAL,
+                    get() {
+                        return acl[this.role];
+                    }
+                }
+            });
         };
     }
 }
 
-class ProfileMongooseModel extends CommonDbModel {
+class UserMongooseModel extends CommonDbModel {
     // todo: if we need it...
 }
 
 module.exports = {
     CommonDbModel,
-    Profile: User,
-    ProfileSequelizeModel,
-    ProfileMongooseModel
+    User,
+    UserSequelizeModel,
+    UserMongooseModel
 }
