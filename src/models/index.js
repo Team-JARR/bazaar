@@ -7,5 +7,5 @@ const sequelize = new Sequelize('sqlite:memory:');
 
 module.exports = {
   db: sequelize,
-  Users: users(sequelize, DataTypes),
+  users: users(sequelize, DataTypes),
 };
