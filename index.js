@@ -5,9 +5,9 @@
 'use strict';
 
 require('dotenv').config();
-const app = require('./src/server.js');
+const app = require('./src/server/server.js');
 
 
 
 
-app.Start(process.env.PORT || 3001);
+app.start(process.env.PORT || 3001);
