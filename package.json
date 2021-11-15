@@ -4,7 +4,7 @@
   "description": "## Cooperation Plan   Every person on your team is an asset. This is your chance to discover the hidden strengths and areas for growth for each team member.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose --coverage",
     "start:server": "node \"src/server/index.js\"",
     "watch": "nodemon index.js"
   },
@@ -28,5 +28,9 @@
     "jwks-rsa": "^2.0.5",
     "sequelize": "^6.9.0",
     "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "jest-cli": "^27.3.1"
   }
 }
