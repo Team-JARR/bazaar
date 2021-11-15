@@ -7,9 +7,9 @@ const SECRET = process.env.SECRET || 'secretlol';
 
 const userModel = (sequelize, DataTypes) => {
   const model = sequelize.define('Users', {
-    username: { type: DataTypes.STRING, allowNull: true, unique: true },
-    password: { type: DataTypes.STRING, allowNull: true },
-    role: { type: DataTypes.ENUM('user', 'admin'), allowNull: true, defaultValue: 'user'},
+    username: { type: DataTypes.STRING, allowNull: false, unique: true },
+    password: { type: DataTypes.STRING, allowNull: false },
+    role: { type: DataTypes.ENUM('user', 'admin'), allowNull: false, defaultValue: 'user'},
     token: {
       type: DataTypes.VIRTUAL,
       get() {
@@ -39,6 +39,7 @@ const userModel = (sequelize, DataTypes) => {
 
   model.authenticateBasic = async function (username, password) {
     const user = await this.findOne({ where: { username } });
+    console.log('------------------>',username, password, user);
     const valid = await bcrypt.compare(password, user.password);
     if (valid) { return user; }
     throw new Error('Invalid User');
