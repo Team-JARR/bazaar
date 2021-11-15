@@ -12,4 +12,5 @@ const messageClient = client('http://localhost:3030/messages'); // add a namespa
 const _default = client('http://localhost:3030');
 
 messageClient.emit('message', 'hello world');
+messageClient.emit('message', 'hello world');
 messageClient.on('received', console.log);
