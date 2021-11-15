@@ -2,12 +2,12 @@
 
 const express = require('express');
 const app = express();
-const authRouter = require('..auth/routes.js')
+const authRouter = require('../auth/routes')
 
 // auth imports here
 
 // model imports
-const { Profile } = require('../models/profile');
+// const { Profile } = require('../models/profile');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -26,11 +26,11 @@ app.post('/say-hello', (req, res) => {
 
 //     res.status(201).send(profile);
 // });
-
+app.use(authRouter);
 
 module.exports = {
     server: app,
-    Start: (port) => {
+    start: (port) => {
         app.listen(port, () => {
             console.log(`Listening on ${port}`);
         });
