@@ -2,10 +2,10 @@
 
 ## Team Members
 
-- Joe Ivans  
-- Alex Grazda  
-- Roop Hayer  
-- Ryan Emmans  
+- Joe Ivans
+- Alex Grazda
+- Roop Hayer
+- Ryan Emmans
 
 [Requirements](./project-management/requirements.md)  
 [Team Agreement](./project-management/team-agreement.md)

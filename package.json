@@ -4,7 +4,9 @@
   "description": "## Cooperation Plan   Every person on your team is an asset. This is your chance to discover the hidden strengths and areas for growth for each team member.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:server": "node \"src/server/index.js\"",
+    "watch": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/Team-JARR/project/issues"
   },
-  "homepage": "https://github.com/Team-JARR/project#readme"
+  "homepage": "https://github.com/Team-JARR/project#readme",
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^2.0.5",
+    "sequelize": "^6.9.0",
+    "sqlite3": "^5.0.2"
+  }
 }
