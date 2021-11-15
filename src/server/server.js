@@ -3,6 +3,7 @@
 const express = require('express');
 const app = express();
 const authRouter = require('../auth/routes')
+const router = require('../routes/routes.js')
 
 // auth imports here
 
@@ -27,6 +28,7 @@ app.post('/say-hello', (req, res) => {
 //     res.status(201).send(profile);
 // });
 app.use(authRouter);
+app.use(router);
 
 module.exports = {
     server: app,
