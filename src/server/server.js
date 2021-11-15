@@ -3,8 +3,10 @@
 const express = require('express');
 const app = express();
 
-// todo: auth imports here
-// todo: model imports here
+// auth imports here
+
+// model imports
+const { Profile } = require('../models/profile');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -14,11 +16,21 @@ app.post('/say-hello', (req, res) => {
     res.status(201).send('Hello!');
 });
 
+app.post('/signup', (req, res) => {
+    const profile = new Profile();
+
+    profile.firstName = 'Joe';
+    profile.lastName = 'Mama';
+    profile.credentialHash = 'my-cool-hash';
+
+    res.status(201).send(profile);
+});
+
 module.exports = {
     server: app,
     Start: (port) => {
         app.listen(port, () => {
-            console.log(`server Up on ${port}`);
+            console.log(`Listening on ${port}`);
         });
     },
 };
