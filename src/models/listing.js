@@ -26,6 +26,10 @@ const listingModel = (sequelize, DataTypes) =>
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
+    createdBy: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   });
 
 module.exports = listingModel;
