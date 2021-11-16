@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest --verbose --coverage",
     "start:server": "node \"src/server/index.js\"",
-    "watch": "nodemon \"src/server\""
+    "start:chat:server": "node \"src/chat/server/index.js\"",
+    "start:chat:client": "node \"src/chat/client/index.js\"",
+    "start:chat:client:logger": "node \"src/chat/client/clientLogger.js\"",
+    "watch": "nodemon \"src/server/index.js\""
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,8 @@
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.0.5",
     "sequelize": "^6.9.0",
+    "socket.io": "^4.3.2",
+    "socket.io-client": "^4.3.2",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {

@@ -26,8 +26,9 @@ const listingModel = (sequelize, DataTypes) =>
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
-    username: {
+    createdBy: {
       type: DataTypes.STRING,
+      allowNull: false,
     }
   });
 
