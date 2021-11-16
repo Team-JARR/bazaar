@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3030;
 const io = require('socket.io-client');
 const socket = io(`http://localhost:${PORT}/messages`);
 
-// publish
+// subscribe
 socket.join('message');
-socket.emit({payload: 'message'}, 'hello world');
-socket.emit({payload: 'message'}, 'hello world');
+socket.on('connect', () => console.log('connected to server'));
+socket.on('message', ({payload}) => console.log('november 15, 2021'));

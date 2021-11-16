@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest --verbose --coverage",
     "start:server": "node \"src/server/index.js\"",
-    "start:chatserver": "node \"src/chat/server/index.js\"",
-    "start:chatclient": "node \"src/chat/client/index.js\"",
-    "start:chattestclient": "node \"src/chat/testClientA.js\"",
+    "start:chat:server": "node \"src/chat/server/index.js\"",
+    "start:chat:client": "node \"src/chat/client/index.js\"",
+    "start:chat:client:logger": "node \"src/chat/client/clientLogger.js\"",
     "watch": "nodemon \"src/server/index.js\""
   },
   "repository": {
