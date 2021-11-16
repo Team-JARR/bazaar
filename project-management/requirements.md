@@ -64,7 +64,7 @@
 
 ### Acceptance Tests
 
-- User can see their listing gone from server with message saying successfully deleted or error message.
+- User can see their listing gone from index with message saying successfully deleted or error message.
 
 ## Provide a link to your project management board that contains your user stories in your project Readme.
 
