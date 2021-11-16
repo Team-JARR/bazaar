@@ -1,6 +1,6 @@
 'use strict';
 
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.CHATPORT || 3030;
 const io = (require('socket.io')(PORT));
 const messages = io.of('/messages');
 
