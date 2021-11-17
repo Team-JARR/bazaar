@@ -1,7 +1,7 @@
-import { ROLE } from './chatRoom';
-import { ChatRoomMember } from './chatRoomMember';
+const { ROLE } = require('./chatRoom');
+const { ChatRoomMember } = require('./chatRoomMember');
 
-export class Buyer extends ChatRoomMember {
+module.exports = class Buyer extends ChatRoomMember {
   constructor(user, listingId) {
     super();
 
@@ -10,4 +10,4 @@ export class Buyer extends ChatRoomMember {
     this.token = user.token;
     this.listingId = listingId;
   }
-}
+};

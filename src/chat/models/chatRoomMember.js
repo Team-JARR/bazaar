@@ -1,4 +1,4 @@
-export class ChatRoomMember {
+module.exports = class ChatRoomMember {
   username;
   role;
   token;
@@ -26,4 +26,4 @@ export class ChatRoomMember {
 
     return new UnauthorizedChatRoomMember(username, role, listingId);
   }
-}
+};
