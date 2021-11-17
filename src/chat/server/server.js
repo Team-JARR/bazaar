@@ -7,15 +7,13 @@ const io = require('socket.io')(http, { pingInterval: 60000 });
 const { db, listing, users } = require('../../data/index');
 const { ROLES, ChatRoom } = require('../models/chatRoom');
 
-const PORT = process.env.CHATPORT || 3030;
-
 figlet('Bazaar', {
   font: 'ANSI Shadow',
   horizontalLayout: 'default',
   verticalLayout: 'default',
   width: 100,
-  whitespaceBreak: true
-}, function (err, data) {
+  whitespaceBreak: true,
+}, (err, data) => {
   if (err) {
     console.log('Something went wrong...');
     console.dir(err);
