@@ -25,7 +25,7 @@ figlet('Bazaar', {
 
 http.listen(
   PORT,
-  () => console.log(`Server listening on PORT: ${PORT}`),
+  () => console.log(chalk.green(`Server listening on PORT: ${PORT}`)),
 );
 
 io.on('connection', (socket) => {

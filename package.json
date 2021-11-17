@@ -9,8 +9,8 @@
     "start": "node index.js",
     "start:server": "node index.js",
     "start:chat-server": "node \"src/chat/server/server.js\"",
-    "start:chat-buyer": "node \"src/chat/client/client.js\" Jacob buyer 1234",
-    "start:chat-seller": "node \"src/chat/client/client.js\" Amazon seller 1234",
+    "start:chat-buyer": "node \"src/chat/client/client.js\" sad buyer 1",
+    "start:chat-seller": "node \"src/chat/client/client.js\" happy seller 1",
     "test": "jest --verbose --coverage",
     "watch": "nodemon index.js"
   },

@@ -21,6 +21,7 @@ class ChatRoom {
    * @param users - The users sequelize table
    */
   constructor(username, role, listingId, listings, users) {
+    // console.log(username, role, listingId, listings, users);
     this.namespace = listingId;
 
     const chatRoomMember = ChatRoomMember.factory(
