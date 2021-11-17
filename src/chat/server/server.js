@@ -5,7 +5,8 @@ const http = require('http').createServer();
 const io = require('socket.io')(http, { pingInterval: 60000 });
 
 const { db, listing, users } = require('../../data/index');
-const { ROLES, ChatRoom } = require('../models/chatRoom');
+const ChatRoom = require('../models/chatRoom');
+const { ROLE } = require('../models/chatRoomMember');
 
 figlet('Bazaar', {
   font: 'ANSI Shadow',
