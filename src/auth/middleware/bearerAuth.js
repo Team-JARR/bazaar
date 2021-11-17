@@ -1,6 +1,4 @@
-'use strict';
-
-const { users } = require('../../models/index.js');
+const { users } = require('../../data/index.js');
 
 module.exports = async (req, res, next) => {
   try {
