@@ -5,7 +5,7 @@ const bearerAuth = require('../auth/middleware/bearerAuth');
 const permissions = require('../auth/middleware/acl.js');
 
 const router = express.Router();
-const { listing } = require('../models');
+const { listing } = require('../data');
 
 router.get('/listing', bearerAuth, permissions('read'), handleGetAll);
 router.get('/listing/user', bearerAuth, permissions('read'), handleGetAllOneUser);

@@ -1,6 +1,6 @@
 'use strict';
 
-const { db, listing } = require('../src/models/index');
+const { db, listing } = require('../src/data/index');
 
 beforeAll(async()=>{
   await db.sync();
@@ -33,4 +33,3 @@ describe('Testing our sequelize listing model', () => {
 
   });
 });
-

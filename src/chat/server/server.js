@@ -2,7 +2,7 @@
 
 const PORT = process.env.CHATPORT || 3030;
 const http = require('http').createServer();
-const {db, listing, users } = require('../../models/index');
+const {db, listing, users } = require('../../data/index');
 const io = require('socket.io')(http, {pingInterval: 60000});
 
 http.listen(
@@ -69,7 +69,7 @@ async function isValidListing({username, listingId}) {
   // else return false
   let createdBy = username;
   let id = listingId;
-  let data = await listing.findOne({ where: { id, createdBy} }); 
+  let data = await listing.findOne({ where: { id, createdBy} });
   if(data){
     return true;
   }else{

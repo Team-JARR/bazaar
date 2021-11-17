@@ -1,7 +1,7 @@
 'use strict';
 
 const supertest = require('supertest');
-const { db } = require('../src/models/index');
+const { db } = require('../src/data/index');
 const server = require('../src/server');
 const base64 = require('base-64');
 const request = supertest(server.server);
@@ -28,7 +28,7 @@ describe ('Testing authentication routes',()=>{
 
   it ('Should be able to sign in with an encoded auth header', async () => {
     let encodedUserPass = base64.encode(`John:doe123`);
-    
+
     const response = await request.get('/signin').set({
       Authorization: `Basic ${encodedUserPass}`,
     });
