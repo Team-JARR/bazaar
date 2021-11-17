@@ -41,7 +41,7 @@ class ChatRoom {
   }
 }
 
-modules.export = {
+module.exports = {
   ROLE,
   ChatRoom,
 };

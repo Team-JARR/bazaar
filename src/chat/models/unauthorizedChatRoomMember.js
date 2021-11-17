@@ -1,6 +1,6 @@
 const { ChatRoomMember } = require('./chatRoomMember');
 
-module.export = class UnauthorizedChatRoomMember extends ChatRoomMember {
+module.exports = class UnauthorizedChatRoomMember extends ChatRoomMember {
   constructor(username, role, listingId) {
     super();
 
