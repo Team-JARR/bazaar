@@ -19,10 +19,11 @@ class ChatRoomMember {
 
   static factory(username, role, listingId, listings, users) {
     // console.log(username, role, listingId, listings, users);
-
-    const listing = listings.findOne({ where: { id: { listingId } } });
+    let id = 1;
+    const listing = listings.findOne({ where: { id } });
+    username = 'happy';
     const user = users.findOne({ where: { username } });
-    // console.log(listing);
+    console.log(listing);
     // console.log(user);
 
     if (ChatRoomMember.isSeller(username, listing)) {
