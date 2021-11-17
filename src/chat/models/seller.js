@@ -1,7 +1,7 @@
-const { ROLE } = require('./chatRoom');
-const { ChatRoomMember } = require('./chatRoomMember');
+const ROLE = require('./chatRoom').ROLE;
+const ChatRoomMember  = require('./chatRoomMember');
 
-module.exports = class Seller extends ChatRoomMember {
+class Seller extends ChatRoomMember {
   constructor(user, listingId) {
     super();
 
@@ -11,3 +11,5 @@ module.exports = class Seller extends ChatRoomMember {
     this.listingId = listingId;
   }
 };
+
+module.exports = Seller;
