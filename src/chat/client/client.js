@@ -18,7 +18,6 @@ figlet('begin chat!', {
   if (err) {
     console.log('Something went wrong...');
     console.dir(err);
-    return;
   }
 });
 

@@ -1,9 +1,4 @@
-const ChatRoomMember = require('./chatRoomMember');
-
-class ROLE {
-  static BUYER = 'buyer';
-  static SELLER = 'seller';
-}
+const {ChatRoomMember, ROLE} = require('./chatRoomMember');
 
 class ChatRoom {
   /**
@@ -24,25 +19,20 @@ class ChatRoom {
    * @param {string} listingId
    * @param listings - The listings sequelize table
    * @param users - The users sequelize table
-   * @returns {Promise<void>}
    */
   constructor(username, role, listingId, listings, users) {
     this.namespace = listingId;
 
     const chatRoomMember = ChatRoomMember.factory(
-      username, 
-      role, 
-      listingId, 
-      listings, 
+      username,
+      role,
+      listingId,
+      listings,
       users);
 
     console.log(chatRoomMember.ROLE);
     this.chatMembers.push(chatRoomMember);
-    
   }
 }
 
-module.exports = {
-  ROLE,
-  ChatRoom,
-};
+module.exports = ChatRoom;

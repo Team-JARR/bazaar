@@ -1,17 +1,13 @@
-const Buyer = require('./buyer')
-const Seller = require('./seller')
-const UnauthorizedChatRoomMember = require('./unauthorizedChatRoomMember')
-
-
+class ROLE {
+  static BUYER = 'buyer';
+  static SELLER = 'seller';
+}
 
 class ChatRoomMember {
   username;
   role;
   token;
   listingId;
-
-  constructor(){
-  }
 
   static isBuyer(listing) {
     return listing;
@@ -22,8 +18,8 @@ class ChatRoomMember {
   }
 
   static factory(username, role, listingId, listings, users) {
-    const listing = async() => await listings.findOne({where: {id: {listingId}}});
-    const user = async() => await users.findOne({where: {username}});
+    const listing = async () => await listings.findOne({where: {id: {listingId}}});
+    const user = async () => await users.findOne({where: {username}});
 
     if (ChatRoomMember.isSeller(username, listing)) {
       return new Seller(user, listingId);
@@ -35,6 +31,40 @@ class ChatRoomMember {
 
     return new UnauthorizedChatRoomMember(username, role, listingId);
   }
-};
+}
 
-module.exports = ChatRoomMember;
+class Buyer extends ChatRoomMember {
+  constructor(user, listingId) {
+    super();
+
+    this.username = user.username;
+    this.role = ROLE.BUYER;
+    this.token = user.token;
+    this.listingId = listingId;
+  }
+}
+
+class Seller extends ChatRoomMember {
+  constructor(user, listingId) {
+    super();
+
+    this.username = user.username;
+    this.role = ROLE.SELLER;
+    this.token = user.token;
+    this.listingId = listingId;
+  }
+}
+
+class UnauthorizedChatRoomMember extends ChatRoomMember {
+  constructor(username, role, listingId) {
+    super();
+
+    this.username = username;
+    this.role = role;
+    this.listingId = listingId;
+  }
+}
+
+module.exports = {
+  ChatRoomMember, ROLE
+};
