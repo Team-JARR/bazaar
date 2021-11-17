@@ -2,8 +2,12 @@ const PORT = process.env.CHATPORT || 3030;
 const figlet = require('figlet');
 const chalk = require('chalk');
 const http = require('http').createServer();
-const { db, listing, users } = require('../../models/index');
 const io = require('socket.io')(http, { pingInterval: 60000 });
+
+const { db, listing, users } = require('../../data/index');
+const { ROLES, ChatRoom } = require('../models/chatRoom');
+
+const PORT = process.env.CHATPORT || 3030;
 
 figlet('Bazaar', {
   font: 'ANSI Shadow',
@@ -34,13 +38,13 @@ io.on('connection', (socket) => {
     What if 2 sellers connect? Which listing are we talking about?
    */
 
-  // expecting client to send an auth message
-  // a username of 'guest' means they haven't specified account name
   socket.on('auth', ({ username, role, listingId }) => {
     console.log(`Attempting to auth user: ${username} with role: ${role} for listingId: ${listingId}`);
-    if (userIsAuthorized(username)) {
-      // auth'd
+
+    /*
+    if (isAuthorizedUser(username)) {
       console.log(`${username} is authorized and joined the chat.`);
+
       if (isValidListing({ username, listingId })) {
         // listing is good, auth'd and seller confirmed
         // todo: let's put buyer and seller in the same "room" where the namespace of the room is the listingId
@@ -52,6 +56,7 @@ io.on('connection', (socket) => {
       // disconnect socket?
       console.log(`${username} is unauthorized anc disconnect from the chat.`);
     }
+*/
   });
 
   socket.on('message', (payload) => {
@@ -64,32 +69,21 @@ io.on('connection', (socket) => {
   });
 });
 
-async function userIsAuthorized({ username }) {
-  // todo: check db for user and return true
-  // use the username in a db.select query
-  // if exists, return true
-  // else return false
+async function isAuthorizedUser({ username }) {
   const data = await users.findOne({ where: { username } });
+
   if (data) {
     return true;
   }
-  return false;
 
-  // return true;
+  return false;
 }
 
 async function isValidListing({ username, listingId }) {
-  // todo: check the listingId is valid
-  // use the username owns that listingId in a db.select query
-  // if exists, return true , maybe count > 0
-  // else return false
-  const createdBy = username;
-  const id = listingId;
-  const data = await listing.findOne({ where: { id, createdBy } });
+  const data = await listing.findOne({ where: { id: { listingId }, createdBy: { username } } });
+
   if (data) {
     return true;
   }
   return false;
-
-  // return true;
 }
