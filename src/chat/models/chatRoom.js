@@ -1,4 +1,4 @@
-import {ChatRoomMember} from './chatRoomMember';
+const {ChatRoomMember} = require('./chatRoomMember');
 
 
 class ROLE {
@@ -41,7 +41,7 @@ class ChatRoom {
   }
 }
 
-export {
+modules.export = {
   ROLE,
   ChatRoom,
 };
