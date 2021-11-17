@@ -2,7 +2,7 @@
 
 const PORT = process.env.CHATPORT || 3030;
 const http = require('http').createServer();
-const {db} = require('../../models/index.js');
+const {db, listing, users } = require('../../models/index');
 const io = require('socket.io')(http, {pingInterval: 60000});
 
 http.listen(
@@ -48,18 +48,33 @@ io.on('connection', (socket) => {
   });
 });
 
-function userIsAuthorized({username}) {
+async function userIsAuthorized({username}) {
   // todo: check db for user and return true
   // use the username in a db.select query
   // if exists, return true
   // else return false
-  return true;
+  data = await users.findOne({ where: { username} } )
+  if(data){
+    return true;
+  }else{
+    return false;
+  }
+  // return true;
 }
 
-function isValidListing({username, listingId}) {
+async function isValidListing({username, listingId}) {
   // todo: check the listingId is valid
   // use the username owns that listingId in a db.select query
   // if exists, return true , maybe count > 0
   // else return false
-  return true;
+  let createdBy = username;
+  let id = listingId;
+  let data = await listing.findOne({ where: { id, createdBy} }); 
+  if(data){
+    return true;
+  }else{
+    return false;
+  }
+
+  // return true;
 }
