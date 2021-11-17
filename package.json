@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose --coverage",
-    "start:server": "node index.js",
     "start": "node index.js",
-    "start:chat:server": "node \"src/chat/server/index.js\"",
-    "start:chat:client": "node \"src/chat/client/index.js\"",
-    "start:chat:client:logger": "node \"src/chat/client/clientLogger.js\"",
+    "start:server": "node index.js",
+    "start:chat-server": "node \"src/chat/server/server.js\"",
+    "start:chat-buyer": "node \"src/chat/client/client.js\" Jacob buyer 1234",
+    "start:chat-seller": "node \"src/chat/client/client.js\" Amazon seller 1234",
     "watch": "nodemon index.js"
   },
   "repository": {

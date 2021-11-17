@@ -1,29 +1,31 @@
 'use strict';
 
-let socket = require('socket.io-client')('http://localhost:3030');
+const PORT = process.env.CHATPORT || 3030;
+const socket = require('socket.io-client')(`http://localhost:${PORT}`);
 const repl = require('repl');
 const chalk = require('chalk');
-let username = null;
-
+const username = process.argv[2] || 'guest';
+const role = process.argv[3] || 'buyer';
+const listingId = process.argv[4] || '4321';
 
 socket.on('connect', () => {
   console.log(chalk.green('=== begin chat! ==='));
-  username = process.argv[2];
+  socket.emit('auth', {username, role, listingId});
 });
 
 socket.on('message', (data) => {
-  const { message, username } = data;
+  const {message} = data;
   console.log(chalk.blue(username + ': ' + message.split('\n')[0]));
 });
 
 socket.on('disconnect', function () {
-  socket.emit('disconnect', username);
+  socket.emit('disconnect', {username});
   console.log('----------------->', username);
 });
 
 repl.start({
   prompt: '',
   eval: (message) => {
-    socket.send({ username, message })
+    socket.send({username, message});
   }
 });
