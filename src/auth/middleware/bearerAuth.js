@@ -1,5 +1,3 @@
-'use strict';
-
 const { users } = require('../../data/index.js');
 
 module.exports = async (req, res, next) => {

@@ -1,25 +1,21 @@
-'use strict';
-
 const { db, listing } = require('../src/data/index');
 
-beforeAll(async()=>{
+beforeAll(async () => {
   await db.sync();
 });
-afterAll(async()=>{
+afterAll(async () => {
   await db.drop();
 });
 describe('Testing our sequelize listing model', () => {
-
   it('Should be able to create a listing', async () => {
-
-    let newListing = await listing.create({
+    const newListing = await listing.create({
       itemName: 'bat',
       condition: 'fair',
-      description:'baseball bat',
+      description: 'baseball bat',
       price: 400,
       obo: true,
       barter: false,
-      createdBy: 'roop'
+      createdBy: 'roop',
     });
 
     expect(newListing.id).toBe(1);
@@ -30,6 +26,5 @@ describe('Testing our sequelize listing model', () => {
     expect(newListing.obo).toBe(true);
     expect(newListing.barter).toBe(false);
     expect(newListing.createdBy).toBe('roop');
-
   });
 });

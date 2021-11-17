@@ -1,15 +1,12 @@
-'use strict';
-
-const {Sequelize, DataTypes} = require('sequelize');
-const users = require('../auth/models/users');
+const { Sequelize, DataTypes } = require('sequelize');
+const users = require('./users');
 const listingModel = require('./listing');
 
-const sequelize = new Sequelize('sqlite:memory:');
-
-const listing = listingModel(sequelize, DataTypes);
+const CONNECTIONSTRING = process.env.CONNECTIONSTRING || 'sqlite:memory:';
+const sequelize = new Sequelize(CONNECTIONSTRING);
 
 module.exports = {
   db: sequelize,
   users: users(sequelize, DataTypes),
-  listing,
+  listing: listingModel(sequelize, DataTypes),
 };
