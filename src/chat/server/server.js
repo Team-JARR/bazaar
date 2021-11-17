@@ -1,7 +1,24 @@
 const PORT = process.env.CHATPORT || 3030;
+const figlet = require('figlet');
+const chalk = require('chalk');
 const http = require('http').createServer();
-const { db, listing, users } = require('../../data/index');
+const { db, listing, users } = require('../../models/index');
 const io = require('socket.io')(http, { pingInterval: 60000 });
+
+figlet('Bazaar', {
+  font: 'ANSI Shadow',
+  horizontalLayout: 'default',
+  verticalLayout: 'default',
+  width: 100,
+  whitespaceBreak: true
+}, function (err, data) {
+  if (err) {
+    console.log('Something went wrong...');
+    console.dir(err);
+    return;
+  }
+  console.log(chalk.magenta(data));
+});
 
 http.listen(
   PORT,
