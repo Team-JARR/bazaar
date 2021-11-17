@@ -23,8 +23,6 @@ async function handleGetAll(req, res) {
 
 async function handleGetAllQuery(req, res) {
   const itemName = req.query.q;
-  // const itemName = item.replace(/['']+/g, '')
-  console.log('------------>item-------->', itemName);
   let allRecords = await listing.findAll({ where: { itemName } });
   res.status(200).json(allRecords);
 }
@@ -50,7 +48,6 @@ async function handleGetOne(req, res) {
   res.status(200).json(oneRecord);
 }
 async function handleCreate(req, res) {
-  console.log('-------------> create ----->',req.user.username)
   let obj = {
   itemName: req.body.itemName,
   condition: req.body.condition,
