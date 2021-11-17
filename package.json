@@ -4,12 +4,14 @@
   "description": "## Cooperation Plan   Every person on your team is an asset. This is your chance to discover the hidden strengths and areas for growth for each team member.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --coverage",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix",
     "start": "node index.js",
     "start:server": "node index.js",
     "start:chat-server": "node \"src/chat/server/server.js\"",
     "start:chat-buyer": "node \"src/chat/client/client.js\" Jacob buyer 1234",
     "start:chat-seller": "node \"src/chat/client/client.js\" Amazon seller 1234",
+    "test": "jest --verbose --coverage",
     "watch": "nodemon index.js"
   },
   "repository": {
@@ -32,11 +34,11 @@
     "sequelize": "^6.9.0",
     "socket.io": "^4.3.2",
     "socket.io-client": "^4.3.2",
-    "sqlite3": "^5.0.2",
-    "supertest": "^6.1.6"
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "jest": "^27.3.1",
-    "jest-cli": "^27.3.1"
+    "jest-cli": "^27.3.1",
+    "supertest": "^6.1.6"
   }
 }
