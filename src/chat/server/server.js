@@ -39,6 +39,7 @@ io.on('connection', (socket) => {
   socket.on('auth', ({ username, role, listingId }) => {
     console.log(`Attempting to auth user: ${username} with role: ${role} for listingId: ${listingId}`);
 
+    new ChatRoom(username, role, listingId, listing, users);
     /*
     if (isAuthorizedUser(username)) {
       console.log(`${username} is authorized and joined the chat.`);

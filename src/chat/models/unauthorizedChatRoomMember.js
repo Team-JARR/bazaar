@@ -1,6 +1,6 @@
-const { ChatRoomMember } = require('./chatRoomMember');
+const ChatRoomMember = require('./chatRoomMember');
 
-module.exports = class UnauthorizedChatRoomMember extends ChatRoomMember {
+class UnauthorizedChatRoomMember extends ChatRoomMember {
   constructor(username, role, listingId) {
     super();
 
@@ -9,3 +9,5 @@ module.exports = class UnauthorizedChatRoomMember extends ChatRoomMember {
     this.listingId = listingId;
   }
 };
+
+module.exports = UnauthorizedChatRoomMember;
