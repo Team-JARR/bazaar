@@ -1,38 +1,27 @@
-const {ChatRoomMember, ROLE} = require('./chatRoomMember');
+const { ChatRoomMember, ROLE } = require("./chatRoomMember");
 
 class ChatRoom {
-  /**
-   * Members of the chat room.
-   * @type {Array<ChatRoomMember>}
-   */
   chatMembers = [];
-
-  /**
-   * The chat room's namespace is the listing id.
-   * @type {string}
-   */
   namespace;
 
-  /**
-   * @param {string} username
-   * @param {ROLE} role
-   * @param {string} listingId
-   * @param listings - The listings sequelize table
-   * @param users - The users sequelize table
-   */
   constructor(username, role, listingId, listings, users) {
-    // console.log(username, role, listingId, listings, users);
     this.namespace = listingId;
+    this.begin(username, role, listingId, listings, users).finally((r) => {
+      console.log(`Chatroom ${listingId} is ready`);
+      this.chatMembers.push(r);
+    });
 
-    const chatRoomMember = ChatRoomMember.factory(
+    console.log(JSON.stringify(this.chatMembers));
+  }
+
+  async begin(username, role, listingId, listings, users) {
+    return await ChatRoomMember.factory(
       username,
       role,
       listingId,
       listings,
-      users);
-
-    console.log(chatRoomMember.ROLE);
-    this.chatMembers.push(chatRoomMember);
+      users
+    );
   }
 }
 

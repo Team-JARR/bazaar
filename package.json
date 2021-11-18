@@ -4,8 +4,6 @@
   "description": "Bazaar - CS 401 Midterm Project. Emmans, Grazda, Hayer, Ivans. Students, Code Fellows Seattle, 2021.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ext \".js,.json\" \".\"",
-    "lint:fix": "eslint --ext \".js,.json\" \".\" --fix",
     "start": "node index.js",
     "start:server": "node index.js",
     "start:chat-server": "node \"src/chat/server/server.js\"",
@@ -39,9 +37,6 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
-    "eslint": "^8.2.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3",
     "jest": "^27.3.1",
     "jest-cli": "^27.3.1",
     "supertest": "^6.1.6"

@@ -3,10 +3,10 @@ module.exports = (capability) => (req, res, next) => {
     if (req.user.capabilities.includes(capability)) {
       next();
     } else {
-      next('Access Denied');
+      next("Access Denied");
     }
   } catch (e) {
     console.log(e);
-    next('Invalid Login');
+    next("Invalid Login");
   }
 };

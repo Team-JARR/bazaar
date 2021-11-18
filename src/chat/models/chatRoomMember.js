@@ -1,6 +1,6 @@
 class ROLE {
-  static BUYER = 'buyer';
-  static SELLER = 'seller';
+  static BUYER = "buyer";
+  static SELLER = "seller";
 }
 
 class ChatRoomMember {
@@ -20,14 +20,9 @@ class ChatRoomMember {
   static async factory(username, role, listingId, listings, users) {
     console.log(username, role, listingId, listings, users);
 
-    const listing = await listings
-      .findOne({where: {id: listingId}});
+    const listing = await listings.findOne({ where: { id: listingId } });
 
-    const user = await users
-      .findOne({where: {username}});
-
-    console.log(listing);
-    console.log(user);
+    const user = await users.findOne({ where: { username } });
 
     if (ChatRoomMember.isSeller(username, listing)) {
       return new Seller(user, listingId);
@@ -74,5 +69,6 @@ class UnauthorizedChatRoomMember extends ChatRoomMember {
 }
 
 module.exports = {
-  ChatRoomMember, ROLE
+  ChatRoomMember,
+  ROLE,
 };
