@@ -1,6 +1,7 @@
-const { Sequelize, DataTypes } = require("sequelize");
-const users = require("./users");
-const listingModel = require("./listing");
+require('dotenv').config();
+const { Sequelize, DataTypes } = require('sequelize');
+const users = require('./users');
+const listingModel = require('./listing');
 
 const DATABASE_URL = process.env.DATABASE_URL || "sqlite::memory";
 

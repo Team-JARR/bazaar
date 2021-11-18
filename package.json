@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "init:config": "sequelize init:config",
+    "db:create": "sequelize db:create",
     "start:server": "node index.js",
     "start:chat": "node \"src/chat/server/server.js\"",
     "start:buyer": "node \"src/chat/client/client.js\" sad buyer 1",
     "start:seller": "node \"src/chat/client/client.js\" happy seller 1",
+    "watch": "nodemon index.js",
     "test": "jest --verbose --coverage",
-    "watch": "nodemon index.js"
+    "test-watch": "jest --watchAll --coverage --verbose"
   },
   "repository": {
     "type": "git",
