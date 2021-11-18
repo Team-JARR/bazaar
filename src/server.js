@@ -7,9 +7,8 @@ const router = require('./routes/routes.js');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// add routes here
 app.get('/', (req, res) => {
-  res.status(201).send('Hello World!');
+  res.status(201).send('Welcome to Bazaar!');
 });
 
 app.use(authRouter);

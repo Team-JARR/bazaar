@@ -9,7 +9,6 @@ router.get('/listing', bearerAuth, permissions('read'), handleGetAll);
 router.get('/listing/user', bearerAuth, permissions('read'), handleGetAllOneUser);
 router.get('/listing/user/:id', bearerAuth, permissions('read'), handleGetOne);
 router.get('/listing/search', handleGetAllQuery);
-// router.get('/listing/search/description', handleGetAllQueryDes);
 router.post('/listing', bearerAuth, handleCreate);
 router.put('/listing/user/:id', bearerAuth, permissions('update'), handleUpdate);
 router.delete('/listing/user/:id', bearerAuth, permissions('delete'), handleDelete);
@@ -24,13 +23,7 @@ async function handleGetAllQuery(req, res) {
   const allRecords = await listing.findAll({ where: { itemName } });
   res.status(200).json(allRecords);
 }
-// async function handleGetAllQueryDes(req, res) {
-//   const description = req.query.q;
-//   // const itemName = item.replace(/['']+/g, '')
-//   console.log('------------>item-------->', description);
-//   let allRecords = await listing.findAll({ where: { description } });
-//   res.status(200).json(allRecords);
-// }
+
 
 async function handleGetAllOneUser(req, res) {
   const createdBy = req.user.username;
