@@ -26,8 +26,7 @@ class ChatRoomMember {
     const user = await users
       .findOne({where: {username}});
 
-    console.log(listing);
-    console.log(user);
+  
 
     if (ChatRoomMember.isSeller(username, listing)) {
       return new Seller(user, listingId);
