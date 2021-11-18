@@ -5,7 +5,7 @@ const figlet = require("figlet");
 const chalk = require("chalk");
 
 const username = process.argv[2] || "happy";
-const role = process.argv[3] || "sad";
+const role = process.argv[3] || "seller";
 const listingId = process.argv[4] || "1";
 
 socket.on("connect", () => {
@@ -32,8 +32,9 @@ socket.on("connect", () => {
 });
 
 socket.on("message", (data) => {
-  const { message } = data;
-  console.log(chalk.blue(`${username}: ${message.split("\n")[0]}`));
+  const message = data.message;
+  const user = data.username;
+  console.log(chalk.blue(`${user}: ${message.split("\n")[0]}`));
 });
 
 socket.on("disconnect", () => {
