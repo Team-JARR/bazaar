@@ -5,7 +5,7 @@ const permissions = require('../auth/middleware/acl.js');
 const router = express.Router();
 const { listing } = require('../data');
 
-router.get('/listing', bearerAuth, permissions('read'), handleGetAll);
+router.get('/listing', handleGetAll);
 router.get('/listing/user', bearerAuth, permissions('read'), handleGetAllOneUser);
 router.get('/listing/user/:id', bearerAuth, permissions('read'), handleGetOne);
 router.get('/listing/search', handleGetAllQuery);
