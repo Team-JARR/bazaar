@@ -18,7 +18,7 @@ module.exports = {
   server: app,
   start: (port) => {
     app.listen(port, () => {
-      console.log(`Listening on ${port}`);
+      console.log(`Main Server listening on PORT ${port}`);
     });
   },
 };

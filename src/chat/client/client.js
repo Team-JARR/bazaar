@@ -15,7 +15,7 @@ socket.on("connect", () => {
   figlet(
     "begin chat!",
     {
-      font: "Italic",
+      font: "Standard",
       horizontalLayout: "default",
       verticalLayout: "default",
       width: 100,

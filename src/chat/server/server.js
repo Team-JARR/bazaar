@@ -28,7 +28,7 @@ figlet(
 );
 
 http.listen(PORT, () =>
-  console.log(chalk.green(`Server listening on PORT: ${PORT}`))
+  console.log(chalk.green(`Chat Server listening on PORT ${PORT}`))
 );
 
 io.on("connection", (socket) => {
@@ -43,16 +43,19 @@ io.on("connection", (socket) => {
     /*
     Let's do some research, figure out socket.io rooms
 
-    // socket.room = room.namespace
+    socket.room = room.name
 
      */
 
     /*
     Then, let's figure out how to boot connections for whoever's not in these 2 roles
 
-    // room.chatMembers.filter(m => m.ROLE !== ROLE.BUYER || m.ROLE !== ROLE.SELLER); // something like this
+    const filter = room.chatMembers.filter(m => m.ROLE !== ROLE.BUYER || m.ROLE !== ROLE.SELLER); // something like this
 
-    // boot those guys
+    boot those guys
+    for (const member of filter) {
+      socket.kick(member.username);
+    }
      */
   });
 
