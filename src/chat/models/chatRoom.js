@@ -6,11 +6,9 @@ class ChatRoom {
 
   constructor(username, role, listingId, listings, users) {
     this.namespace = listingId;
-    this
-      .begin(username, role, listingId, listings, users)
-      .finally((r) => {
-        console.log(`Chatroom ${listingId} is ready`);
-        this.chatMembers.push(r);
+    this.begin(username, role, listingId, listings, users).finally((r) => {
+      console.log(`Chatroom ${listingId} is ready`);
+      this.chatMembers.push(r);
     });
 
     console.log(JSON.stringify(this.chatMembers));

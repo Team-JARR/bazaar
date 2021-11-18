@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
-const authRouter = require('./auth/routes.js');
-const router = require('./routes/routes.js');
+const authRouter = require("./auth/routes.js");
+const router = require("./routes/routes.js");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.status(201).send('Welcome to Bazaar!');
+app.get("/", (req, res) => {
+  res.status(201).send("Welcome to Bazaar!");
 });
 
 app.use(authRouter);
