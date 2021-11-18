@@ -25,7 +25,7 @@ figlet('Bazaar', {
 
 http.listen(
   PORT,
-  () => console.log(`Server listening on PORT: ${PORT}`),
+  () => console.log(chalk.green(`Server listening on PORT: ${PORT}`)),
 );
 
 io.on('connection', (socket) => {
@@ -41,22 +41,6 @@ io.on('connection', (socket) => {
     console.log(`Attempting to auth user: ${username} with role: ${role} for listingId: ${listingId}`);
 
     new ChatRoom(username, role, listingId, listing, users);
-    /*
-    if (isAuthorizedUser(username)) {
-      console.log(`${username} is authorized and joined the chat.`);
-
-      if (isValidListing({ username, listingId })) {
-        // listing is good, auth'd and seller confirmed
-        // todo: let's put buyer and seller in the same "room" where the namespace of the room is the listingId
-      } else {
-        // something is wrong with: listingId, seller might not own listing, username might not be valid account
-      }
-    } else {
-      // unauth'd
-      // disconnect socket?
-      console.log(`${username} is unauthorized anc disconnect from the chat.`);
-    }
-*/
   });
 
   socket.on('message', (payload) => {

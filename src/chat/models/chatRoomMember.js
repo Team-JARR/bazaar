@@ -17,9 +17,17 @@ class ChatRoomMember {
     return listing && listing.createdBy === username;
   }
 
-  static factory(username, role, listingId, listings, users) {
-    const listing = async () => await listings.findOne({where: {id: {listingId}}});
-    const user = async () => await users.findOne({where: {username}});
+  static async factory(username, role, listingId, listings, users) {
+    console.log(username, role, listingId, listings, users);
+
+    const listing = await listings
+      .findOne({where: {id: listingId}});
+
+    const user = await users
+      .findOne({where: {username}});
+
+    console.log(listing);
+    console.log(user);
 
     if (ChatRoomMember.isSeller(username, listing)) {
       return new Seller(user, listingId);

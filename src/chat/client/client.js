@@ -8,22 +8,23 @@ const username = process.argv[2] || 'guest';
 const role = process.argv[3] || 'buyer';
 const listingId = process.argv[4] || '4321';
 
-figlet('begin chat!', {
-  font: 'italic',
-  horizontalLayout: 'default',
-  verticalLayout: 'default',
-  width: 100,
-  whitespaceBreak: true,
-}, (err, data) => {
-  if (err) {
-    console.log('Something went wrong...');
-    console.dir(err);
-  }
-});
-
 socket.on('connect', () => {
-  console.log(chalk.green(data));
+  console.log(chalk.green('Connected.'));
   socket.emit('auth', { username, role, listingId });
+
+  figlet('begin chat!', {
+    font: 'Italic',
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+    width: 100,
+    whitespaceBreak: true,
+  }, (err, data) => {
+    if (err) {
+      console.log('Something went wrong...');
+      console.dir(err);
+    }
+    console.log(chalk.blue(data));
+  });
 });
 
 socket.on('message', (data) => {

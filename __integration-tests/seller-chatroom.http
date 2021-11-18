@@ -1,0 +1,36 @@
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+"username": "happy",
+"password": "gilmore",
+"role": "admin"
+}
+
+###
+
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+"username": "sad",
+"password": "gilmore",
+"role": "admin"
+}
+
+###
+
+POST http://localhost:3000/listing
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhcHB5IiwiaWF0IjoxNjM3MTkzNDQwfQ.kwL8s5ISACfzFyMzhaqjlEcZPUj64KeuXQkKjqdB0rI
+
+{
+"itemName":"house",
+"condition":"good",
+"description":"6000 sq ft 5 bed 8 bath",
+"price":"2000000",
+"obo":true,
+"barter":true
+}
+
+###
