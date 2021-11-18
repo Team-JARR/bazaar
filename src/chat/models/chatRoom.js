@@ -2,10 +2,10 @@ const { ChatRoomMember, ROLE } = require("./chatRoomMember");
 
 class ChatRoom {
   chatMembers = [];
-  namespace;
+  name;
 
   constructor(username, role, listingId, listings, users) {
-    this.namespace = listingId;
+    this.name = listingId;
     this.begin(username, role, listingId, listings, users).finally((r) => {
       console.log(`Chatroom ${listingId} is ready`);
       this.chatMembers.push(r);
