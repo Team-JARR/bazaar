@@ -1,3 +1,8 @@
+
+'use strict';
+
+require('dotenv').config();
+
 const PORT = process.env.CHATPORT || 3030;
 const figlet = require("figlet");
 const chalk = require("chalk");
