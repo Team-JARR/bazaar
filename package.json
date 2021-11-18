@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "start:server": "node index.js",
-    "start:chat-server": "node \"src/chat/server/server.js\"",
-    "start:chat-buyer": "node \"src/chat/client/client.js\" sad buyer 1",
-    "start:chat-seller": "node \"src/chat/client/client.js\" happy seller 1",
+    "start:chat": "node \"src/chat/server/server.js\"",
+    "start:buyer": "node \"src/chat/client/client.js\" sad buyer 1",
+    "start:seller": "node \"src/chat/client/client.js\" happy seller 1",
     "test": "jest --verbose --coverage",
     "watch": "nodemon index.js"
   },
@@ -31,7 +31,9 @@
     "express": "^4.17.1",
     "figlet": "^1.5.2",
     "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
     "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0",
     "socket.io": "^4.3.2",
     "socket.io-client": "^4.3.2",
     "sqlite3": "^5.0.2"
