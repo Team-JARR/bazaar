@@ -17,7 +17,7 @@ describe('Testing authentication routes', () => {
     const response = await request.post('/signup').send({
       username: 'John',
       password: 'doe123',
-      role: 'user',
+      role: 'readonly',
     });
     const userObject = response.body.user;
     expect(response.status).toBe(201);
