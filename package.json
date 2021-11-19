@@ -9,8 +9,9 @@
     "start": "NODE_ENV=production node index.js",
     "start:server": "node index.js",
     "start:chat": "node \"src/chat/server/server.js\"",
-    "start:seller": "node \"src/chat/client/client.js\" Robin Seller 1",
-    "start:buyer": "node \"src/chat/client/client.js\" Jacob Buyer 1",
+    "start:buyer": "node \"src/chat/client/client.js\"",
+    "start:seller": "node \"src/chat/client/client.js\" Robin MacBook-Pro",
+    "watch": "nodemon index.js",
     "test": "NODE_ENV=test jest --verbose --coverage",
     "test-watch": "jest --watchAll --coverage --verbose",
     "watch": "nodemon index.js"
