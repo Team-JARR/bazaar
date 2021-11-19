@@ -1,6 +1,4 @@
-'use strict';
-
-const { users } = require('../../models/index.js');
+const { users } = require("../../data/index.js");
 
 module.exports = async (req, res, next) => {
   try {
@@ -8,7 +6,7 @@ module.exports = async (req, res, next) => {
       _authError();
     }
 
-    const token = req.headers.authorization.split(' ').pop();
+    const token = req.headers.authorization.split(" ").pop();
     const validUser = await users.authenticateToken(token);
     req.user = validUser;
     req.token = validUser.token;
@@ -19,6 +17,6 @@ module.exports = async (req, res, next) => {
   }
 
   function _authError() {
-    next('Invalid Login');
+    next("Invalid Login");
   }
 };
