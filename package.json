@@ -4,16 +4,16 @@
   "description": "Bazaar - CS 401 Midterm Project. Emmans, Grazda, Hayer, Ivans. Students, Code Fellows Seattle, 2021.",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
-    "init:config": "sequelize init:config",
     "db:create": "sequelize db:create",
+    "init:config": "sequelize init:config",
+    "start": "NODE_ENV=production node index.js",
     "start:server": "node index.js",
     "start:chat": "node \"src/chat/server/server.js\"",
-    "start:buyer": "node \"src/chat/client/client.js\" Jacob Buyer 1",
     "start:seller": "node \"src/chat/client/client.js\" Robin Seller 1",
-    "watch": "nodemon index.js",
+    "start:buyer": "node \"src/chat/client/client.js\" Jacob Buyer 1",
     "test": "NODE_ENV=test jest --verbose --coverage",
-    "test-watch": "jest --watchAll --coverage --verbose"
+    "test-watch": "jest --watchAll --coverage --verbose",
+    "watch": "nodemon index.js"
   },
   "repository": {
     "type": "git",
