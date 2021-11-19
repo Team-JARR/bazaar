@@ -10,7 +10,7 @@
     "start:server": "node index.js",
     "start:chat": "node \"src/chat/server/server.js\"",
     "start:buyer": "node \"src/chat/client/client.js\"",
-    "start:seller": "node \"src/chat/client/client.js\" Robin MacBook-Pro",
+    "start:seller": "node \"src/chat/client/client.js\" Robin Seller 14-MacBook-Pro",
     "watch": "nodemon index.js",
     "test": "NODE_ENV=test jest --verbose --coverage",
     "test-watch": "jest --watchAll --coverage --verbose",
