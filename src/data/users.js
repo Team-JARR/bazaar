@@ -18,16 +18,15 @@ const userModel = (sequelize, DataTypes) => {
         return jwt.sign({ username: this.username }, SECRET);
       },
       set(tokenObj) {
-        const token = jwt.sign(tokenObj, SECRET);
-        return token;
+        return jwt.sign(tokenObj, SECRET);
       },
     },
     capabilities: {
       type: DataTypes.VIRTUAL,
       get() {
         const acl = {
-          user: ["read"],
-          admin: ["read", "create", "update", "delete"],
+          readOnly: ["read"],
+          user: ["read", "create", "update", "delete"],
         };
         return acl[this.role];
       },
@@ -35,8 +34,7 @@ const userModel = (sequelize, DataTypes) => {
   });
 
   model.beforeCreate(async (user) => {
-    const hashedPass = await bcrypt.hash(user.password, 10);
-    user.password = hashedPass;
+    user.password = await bcrypt.hash(user.password, 10);
   });
 
   model.authenticateBasic = async function (username, password) {
