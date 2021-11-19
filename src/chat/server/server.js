@@ -33,7 +33,7 @@ figlet(
 );
 
 http.listen(PORT, () =>
-  console.log(chalk.green(`CHAT SERVER listening on PORT ${PORT}.`))
+  console.log(chalk.green('CHAT SERVER is now running.'))
 );
 
 io.on("connection", (socket) => {

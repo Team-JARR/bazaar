@@ -26,7 +26,7 @@ socket.on("connect", () => {
         console.log("Something went wrong...");
         console.dir(err);
       }
-      console.log(chalk.blue(data));
+      console.log(chalk.magenta(data));
     }
   );
 });
