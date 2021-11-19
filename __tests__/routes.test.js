@@ -17,7 +17,7 @@ describe('Testing authenticated /listing route with admin user', () => {
     const responseUser = await request.post('/signup').send({
       username: 'Happy',
       password: 'Gilmore',
-      role: 'admin',
+      role: 'user',
     });
     const userObject = responseUser.body.user;
     token = userObject.token;
